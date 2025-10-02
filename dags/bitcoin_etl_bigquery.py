@@ -17,7 +17,7 @@ GCP_CONN_ID = "google_cloud_default"  # Airflow connection with a SA that can wr
 
 DEFAULT_ARGS = {
     "email_on_failure": True,
-    "owner": "Alex Lopes",
+    "owner": "Jose Lobo",
 }
 
 @task
@@ -87,8 +87,8 @@ def fetch_and_to_gbq():
     start_date=pendulum.datetime(2025, 9, 17, tz="UTC"),
     catchup=True,
     owner_links={
-        "Alex Lopes": "mailto:alexlopespereira@gmail.com",
-        "Open in Cloud IDE": "https://cloud.astronomer.io/cm3webulw15k701npm2uhu77t/cloud-ide/cm42rbvn10lqk01nlco70l0b8/cm44gkosq0tof01mxajutk86g",
+        "Alex Lopes": "mailto:loboferreira.adv@gmail.com"
+       
     },
     tags=["bitcoin", "etl", "coingecko", "bigquery", "pandas-gbq"],
 )
