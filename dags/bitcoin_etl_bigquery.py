@@ -17,7 +17,7 @@ GCP_CONN_ID = "google_cloud_default"  # Airflow connection with a SA that can wr
 
 DEFAULT_ARGS = {
     "email_on_failure": True,
-    "owner": "Jose Lobo",
+    "owner": "José Lobo",
 }
 
 @task
@@ -82,12 +82,14 @@ def fetch_and_to_gbq():
     print(f"Loaded {len(df)} rows to {GCP_PROJECT}.{destination_table} (location={BQ_LOCATION}).")
 
 @dag(
+    dag_id="fetch_bitcoin_data_hourly",
     default_args=DEFAULT_ARGS,
     schedule="0 0 * * *",  # daily at 00:00 UTC
     start_date=pendulum.datetime(2025, 9, 17, tz="UTC"),
     catchup=True,
+    max_active_runs=1,  # limit concurrent backfills if desired
     owner_links={
-        "Alex Lopes": "mailto:loboferreira.adv@gmail.com"
+        "José Lobo": "mailto:loboferreira.adv@gmail.com"
        
     },
     tags=["bitcoin", "etl", "coingecko", "bigquery", "pandas-gbq"],
